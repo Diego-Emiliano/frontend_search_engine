@@ -3,7 +3,7 @@
 	Copyright (c) 2024 Diego-Emiliano
 
 	This file is part of frontend_search_engine (https://github.com/Diego-Emiliano/frontend_search_engine),
-	which is licensed under the MIT License. (see LICENSE.txt or https://github.com/Diego-Emiliano/frontend_search_engine/LICENSE.txt)
+	which is licensed under the MIT License. (see LICENSE.txt or https://github.com/Diego-Emiliano/frontend_search_engine/blob/main/LICENSE.txt)
      
 **/
 
