@@ -50,6 +50,11 @@ mensaje.addEventListener("click", function (ev) {
     ev.preventDefault(); // Evitar el envío del formulario
 });
 
+const resultado = 4;
+
+var dato1 = 0;
+var dato2 = resultado
+
 function search() {
     const input = document.getElementById("searchInput");
     const filter = input.value.toUpperCase();
@@ -70,7 +75,107 @@ function search() {
     });
 
     // Limitar a un máximo de 4 resultados
-    const resultsToShow = filteredData.slice(0, 4);
+    const resultsToShow = filteredData.slice(dato1, dato2);
+
+    // Mostrar resultados
+    resultsToShow.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "result-item";
+
+        // Crear un enlace
+        const link = document.createElement("a");
+        link.href = item.url; // URL del enlace
+        link.textContent = `${item.nombre} ${item.fecha}`; // Texto del enlace
+        link.target = "_blank"; // Abrir en nueva pestaña
+
+        div.appendChild(link); // Añadir el enlace al div
+        resultContainer.appendChild(div); // Añadir el div al contenedor de resultados
+    });
+
+    // Mensaje si no hay resultados
+    if (resultsToShow.length === 0) {
+        resultContainer.innerHTML = "<div class='result-item'>No se encontraron resultados.</div>";
+    }
+}
+
+//Boton siguiente
+
+function siguiente() {
+    const input = document.getElementById("searchInput");
+    const filter = input.value.toUpperCase();
+    const resultContainer = document.getElementById("resultContainer");
+
+    // Limpiar resultados previos
+    resultContainer.innerHTML = "";
+
+    // Si no hay texto en el campo de búsqueda, no mostrar nada
+    if (!filter) {
+        return; // Salir de la función si el campo está vacío
+    }
+
+    // Filtrar los datos
+    const filteredData = data.filter(item => {
+        return item.fecha.toUpperCase().includes(filter) || 
+               item.nombre.toUpperCase().includes(filter);
+    });
+    
+    if(!(dato2 >= filteredData.length)){
+    	dato1+=resultado;
+    	dato2+=resultado
+    }
+
+    // Limitar a un máximo de 4 resultados
+    const resultsToShow = filteredData.slice(dato1, dato2);
+
+    // Mostrar resultados
+    resultsToShow.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "result-item";
+
+        // Crear un enlace
+        const link = document.createElement("a");
+        link.href = item.url; // URL del enlace
+        link.textContent = `${item.nombre} ${item.fecha}`; // Texto del enlace
+        link.target = "_blank"; // Abrir en nueva pestaña
+
+        div.appendChild(link); // Añadir el enlace al div
+        resultContainer.appendChild(div); // Añadir el div al contenedor de resultados
+    });
+
+    // Mensaje si no hay resultados
+    if (resultsToShow.length === 0) {
+        resultContainer.innerHTML = "<div class='result-item'>No se encontraron resultados.</div>";
+    }
+}
+
+//Boton anterior
+
+function anterior() {
+    const input = document.getElementById("searchInput");
+    const filter = input.value.toUpperCase();
+    const resultContainer = document.getElementById("resultContainer");
+
+    // Limpiar resultados previos
+    resultContainer.innerHTML = "";
+
+    // Si no hay texto en el campo de búsqueda, no mostrar nada
+    if (!filter) {
+        return; // Salir de la función si el campo está vacío
+    }
+
+    // Filtrar los datos
+    const filteredData = data.filter(item => {
+        return item.fecha.toUpperCase().includes(filter) || 
+               item.nombre.toUpperCase().includes(filter);
+    });
+
+    if(!(dato1 === 0)){
+	dato1-=resultado;
+	dato2-=resultado
+    }
+
+    // Limitar a un máximo de resultados
+    const resultsToShow = filteredData.slice(dato1, dato2);
 
     // Mostrar resultados
     resultsToShow.forEach(item => {
