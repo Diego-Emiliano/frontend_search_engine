@@ -34,6 +34,22 @@ const data = [
   { fecha: "24", nombre: "Veinticuatro", url: "/veinticuatro" }
 ];
 
+const boton1 = document.getElementById("boton1");
+const boton2 = document.getElementById("boton2");
+const mensaje = document.getElementById("searchInput");
+
+boton1.addEventListener("click", function (ev) {
+    ev.preventDefault(); // Evitar el envío del formulario
+});
+
+boton2.addEventListener("click", function (ev) {
+    ev.preventDefault(); // Evitar el envío del formulario
+});
+
+mensaje.addEventListener("click", function (ev) {
+    ev.preventDefault(); // Evitar el envío del formulario
+});
+
 function search() {
     const input = document.getElementById("searchInput");
     const filter = input.value.toUpperCase();
