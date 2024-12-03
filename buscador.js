@@ -8,11 +8,30 @@
 **/
 
 const data = [
-    { fecha: "1", nombre: "Alpha", url: "/" },
-    { fecha: "2", nombre: "Beta", url: "/" },
-    { fecha: "3", nombre: "Omega", url: "/" },
-    { fecha: "4", nombre: "Gamma", url: "/" },
-    { fecha: "5", nombre: "Delta", url: "/" }
+  { fecha: "1", nombre: "Uno", url: "/uno" },
+  { fecha: "2", nombre: "Dos", url: "/dos" },
+  { fecha: "3", nombre: "Tres", url: "/tres" },
+  { fecha: "4", nombre: "Cuatro", url: "/cuatro" },
+  { fecha: "5", nombre: "Cinco", url: "/cinco" },
+  { fecha: "6", nombre: "Seis", url: "/seis" },
+  { fecha: "7", nombre: "Siete", url: "/siete" },
+  { fecha: "8", nombre: "Ocho", url: "/ocho" },
+  { fecha: "9", nombre: "Nueve", url: "/nueve" },
+  { fecha: "10", nombre: "Diez", url: "/diez" },
+  { fecha: "11", nombre: "Once", url: "/once" },
+  { fecha: "12", nombre: "Doce", url: "/doce" },
+  { fecha: "13", nombre: "Trece", url: "/trece" },
+  { fecha: "14", nombre: "Catorce", url: "/catorce" },
+  { fecha: "15", nombre: "Quince", url: "/quince" },
+  { fecha: "16", nombre: "Diciseis", url: "/diciseis" },
+  { fecha: "17", nombre: "Diecisiete", url: "/dieciocho" },
+  { fecha: "18", nombre: "Dieciocho", url: "/diecisiete" },
+  { fecha: "19", nombre: "Diecinueve", url: "/diecinueve" },
+  { fecha: "20", nombre: "Veinte", url: "/veinte" },
+  { fecha: "21", nombre: "Veintiuno", url: "/veintiuno" },
+  { fecha: "22", nombre: "Veintidos", url: "/veintidos" },
+  { fecha: "23", nombre: "Veintitres", url: "/veintitres" },
+  { fecha: "24", nombre: "Veinticuatro", url: "/veinticuatro" }
 ];
 
 function search() {
