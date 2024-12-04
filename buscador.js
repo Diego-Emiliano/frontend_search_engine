@@ -67,6 +67,9 @@ function search() {
 
     // Si no hay texto en el campo de búsqueda, no mostrar nada
     if (!filter) {
+	// Resetear los botones
+	boton2.setAttribute("disabled", "");
+	boton1.setAttribute("disabled", "");
         return; // Salir de la función si el campo está vacío
     }
 
@@ -75,6 +78,17 @@ function search() {
         return item.fecha.toUpperCase().includes(filter) || 
                item.nombre.toUpperCase().includes(filter);
     });
+
+    // Botones
+    
+    if(dato2 >= filteredData.length){
+		boton2.setAttribute("disabled", "")
+	}
+	
+	if(!(dato2 >= filteredData.length)){
+		boton2.removeAttribute("disabled")
+    }
+
 
     // Limitar a un máximo de 4 resultados
     const resultsToShow = filteredData.slice(dato1, dato2);
@@ -115,10 +129,18 @@ function siguiente() {
         return item.fecha.toUpperCase().includes(filter) || 
                item.nombre.toUpperCase().includes(filter);
     });
+
+    // Botones
+
+    dato1+=resultado;
+    dato2+=resultado;
     
-    if(!(dato2 >= filteredData.length)){
-    	dato1+=resultado;
-    	dato2+=resultado
+    if(dato2 >= filteredData.length){
+		boton2.setAttribute("disabled", "")
+	}
+	
+	if(!(dato1 === 0)){
+		boton1.removeAttribute("disabled")
     }
 
     // Limitar a un máximo de 4 resultados
@@ -155,10 +177,18 @@ function anterior() {
         return item.fecha.toUpperCase().includes(filter) || 
                item.nombre.toUpperCase().includes(filter);
     });
+    
+    // Botones
 
-    if(!(dato1 === 0)){
 	dato1-=resultado;
-	dato2-=resultado
+	dato2-=resultado;
+    
+    if(dato1 === 0){
+		boton1.setAttribute("disabled", "");
+	}
+	
+	if(!(dato2 >= filteredData.length)){
+		boton2.removeAttribute("disabled")
     }
 
     // Limitar a un máximo de resultados
