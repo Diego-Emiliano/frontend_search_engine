@@ -108,11 +108,6 @@ function siguiente() {
     // Limpiar resultados previos
     resultContainer.innerHTML = "";
 
-    // Si no hay texto en el campo de búsqueda, no mostrar nada
-    if (!filter) {
-        return; // Salir de la función si el campo está vacío
-    }
-
     // Filtrar los datos
     const filteredData = data.filter(item => {
         return item.fecha.toUpperCase().includes(filter) || 
@@ -141,11 +136,6 @@ function siguiente() {
         div.appendChild(link); // Añadir el enlace al div
         resultContainer.appendChild(div); // Añadir el div al contenedor de resultados
     });
-
-    // Mensaje si no hay resultados
-    if (resultsToShow.length === 0) {
-        resultContainer.innerHTML = "<div class='result-item'>No se encontraron resultados.</div>";
-    }
 }
 
 //Boton anterior
@@ -157,11 +147,6 @@ function anterior() {
 
     // Limpiar resultados previos
     resultContainer.innerHTML = "";
-
-    // Si no hay texto en el campo de búsqueda, no mostrar nada
-    if (!filter) {
-        return; // Salir de la función si el campo está vacío
-    }
 
     // Filtrar los datos
     const filteredData = data.filter(item => {
@@ -191,9 +176,4 @@ function anterior() {
         div.appendChild(link); // Añadir el enlace al div
         resultContainer.appendChild(div); // Añadir el div al contenedor de resultados
     });
-
-    // Mensaje si no hay resultados
-    if (resultsToShow.length === 0) {
-        resultContainer.innerHTML = "<div class='result-item'>No se encontraron resultados.</div>";
-    }
 }
