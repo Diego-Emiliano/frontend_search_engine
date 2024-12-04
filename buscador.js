@@ -59,6 +59,8 @@ function search() {
     const input = document.getElementById("searchInput");
     const filter = input.value.toUpperCase();
     const resultContainer = document.getElementById("resultContainer");
+    dato2 = resultado;
+    dato1 = 0;
 
     // Limpiar resultados previos
     resultContainer.innerHTML = "";
