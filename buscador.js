@@ -57,11 +57,13 @@ var dato2 = resultado
 
 const input = document.getElementById("searchInput");
 const resultContainer = document.getElementById("resultContainer");
+const select = document.getElementById("select");
 
 function search() {
     const filter = input.value.toUpperCase();
     dato2 = resultado;
     dato1 = 0;
+    select.removeAttribute("disabled");
 
     // Limpiar resultados previos
     resultContainer.innerHTML = "";
@@ -71,6 +73,9 @@ function search() {
 	// Resetear los botones
 	boton2.setAttribute("disabled", "");
 	boton1.setAttribute("disabled", "");
+	// Resetear selector
+	numeros.innerHTML = "";
+	numeros.setAttribute("disabled", "");
         return; // Salir de la función si el campo está vacío
     }
 
@@ -112,6 +117,21 @@ function search() {
     // Mensaje si no hay resultados
     if (resultsToShow.length === 0) {
         resultContainer.innerHTML = "<div class='result-item'>No se encontraron resultados.</div>";
+    }
+    
+    // Selector
+    const pagina = dato2/resultado;
+    const paginas = Math.ceil(filteredData.length/resultado);
+    select.innerHTML = "";
+    for (let i = 0; i < paginas; i++) {
+	const option_number = 1 + i;
+	const option = document.createElement("option");
+	option.setAttribute("id", `${option_number}`);
+	option.textContent = `${option_number}`;
+	option.appendChild(option);
+    }
+    if (!(resultsToShow.length === 0)) {
+	document.getElementById(`${pagina}`).setAttribute("selected", "");
     }
 }
 
@@ -159,6 +179,12 @@ function siguiente() {
         div.appendChild(link); // Añadir el enlace al div
         resultContainer.appendChild(div); // Añadir el div al contenedor de resultados
     });
+
+    // Selector
+    const pagina = dato2/resultado;
+    const previous_option = pagina-1;
+    document.getElementById(`${previous_option}`).removeAttribute("selected");
+    document.getElementById(`${pagina}`).setAttribute("selected", "")
 }
 
 //Boton anterior
@@ -177,17 +203,80 @@ function anterior() {
     
     // Botones
 
-	dato1-=resultado;
-	dato2-=resultado;
+    dato1-=resultado;
+    dato2-=resultado;
     
     if(dato1 === 0){
 		boton1.setAttribute("disabled", "");
 	}
 	
-	if(!(dato2 >= filteredData.length)){
+    if(!(dato2 >= filteredData.length)){
 		boton2.removeAttribute("disabled")
     }
 
+    // Limitar a un máximo de resultados
+    const resultsToShow = filteredData.slice(dato1, dato2);
+
+    // Mostrar resultados
+    resultsToShow.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "result-item";
+
+        // Crear un enlace
+        const link = document.createElement("a");
+        link.href = item.url; // URL del enlace
+        link.textContent = `${item.nombre} ${item.fecha}`; // Texto del enlace
+        link.target = "_blank"; // Abrir en nueva pestaña
+
+        div.appendChild(link); // Añadir el enlace al div
+        resultContainer.appendChild(div); // Añadir el div al contenedor de resultados
+    });
+
+    // Selector
+    const pagina = dato2/resultado;
+    const previous_option = pagina+1;
+    document.getElementById(`${previous_option}`).removeAttribute("selected");
+    document.getElementById(`${pagina}`).setAttribute("selected", "")
+}
+
+// Seleccion
+function opcionSeleccionada() {
+    const filter = input.value.toUpperCase();
+
+    // Limpiar resultados previos
+    resultContainer.innerHTML = "";
+
+    // Filtrar los datos
+    const filteredData = data.filter(item => {
+        return item.fecha.toUpperCase().includes(filter) || 
+               item.nombre.toUpperCase().includes(filter);
+    });
+	
+// Selector
+const pagina = dato2/resultado;
+document.getElementById(`${pagina}`).removeAttribute("selected");
+const x = select.selectedIndex+1;
+dato1 = x*resultado-resultado;
+dato2 = x*resultado;
+document.getElementById(`${x}`).setAttribute("selected", "");
+	
+    // Botones
+    if(dato1 === 0){
+		boton1.setAttribute("disabled", "");
+	}
+
+    if(!(dato2 >= filteredData.length)){
+		boton2.removeAttribute("disabled")
+    }
+    
+    if(dato2 >= filteredData.length){
+		boton2.setAttribute("disabled", "")
+	}
+	
+	if(!(dato1 === 0)){
+		boton1.removeAttribute("disabled")
+    }
+    
     // Limitar a un máximo de resultados
     const resultsToShow = filteredData.slice(dato1, dato2);
 
