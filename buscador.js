@@ -128,7 +128,7 @@ function search() {
 	const option = document.createElement("option");
 	option.setAttribute("id", `${option_number}`);
 	option.textContent = `${option_number}`;
-	option.appendChild(option);
+	select.appendChild(option);
     }
     if (!(resultsToShow.length === 0)) {
 	document.getElementById(`${pagina}`).setAttribute("selected", "");
