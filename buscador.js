@@ -55,10 +55,11 @@ const resultado = 4;
 var dato1 = 0;
 var dato2 = resultado
 
+const input = document.getElementById("searchInput");
+const resultContainer = document.getElementById("resultContainer");
+
 function search() {
-    const input = document.getElementById("searchInput");
     const filter = input.value.toUpperCase();
-    const resultContainer = document.getElementById("resultContainer");
     dato2 = resultado;
     dato1 = 0;
 
@@ -117,9 +118,7 @@ function search() {
 //Boton siguiente
 
 function siguiente() {
-    const input = document.getElementById("searchInput");
     const filter = input.value.toUpperCase();
-    const resultContainer = document.getElementById("resultContainer");
 
     // Limpiar resultados previos
     resultContainer.innerHTML = "";
@@ -165,9 +164,7 @@ function siguiente() {
 //Boton anterior
 
 function anterior() {
-    const input = document.getElementById("searchInput");
     const filter = input.value.toUpperCase();
-    const resultContainer = document.getElementById("resultContainer");
 
     // Limpiar resultados previos
     resultContainer.innerHTML = "";
