@@ -74,8 +74,8 @@ function search() {
 	boton2.setAttribute("disabled", "");
 	boton1.setAttribute("disabled", "");
 	// Resetear selector
-	numeros.innerHTML = "";
-	numeros.setAttribute("disabled", "");
+	select.innerHTML = "";
+	select.setAttribute("disabled", "");
         return; // Salir de la función si el campo está vacío
     }
 
